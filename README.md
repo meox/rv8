@@ -1,4 +1,4 @@
-# rv8
+# RV8 (V8 Engine Wrapper)
 V8 Engine mini wrapper
 
 ## Linux
