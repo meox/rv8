@@ -146,7 +146,7 @@ public:
 
 
     template <typename ...Args>
-    bool invoke_jsfun(const std::string& function_name, Args ...args)
+    bool invoke_jsfun(const std::string& function_name, Args&& ...args)
     {
         HandleScope handle_scope(engine_isolate);
         Local<String> jf_name = rv::string(engine_isolate, function_name);
@@ -186,7 +186,7 @@ public:
 
 private:
     template <typename ...Args>
-    void fill_parameter(Handle<Value>* arr, uint32_t p, int v, Args ...args)
+    void fill_parameter(Handle<Value>* arr, uint32_t p, int v, Args&& ...args)
     {
         Local<Integer> jv = Integer::New(engine_isolate, v);
         arr[p] = jv;
@@ -194,7 +194,7 @@ private:
     }
 
     template <typename ...Args>
-    void fill_parameter(Handle<Value>* arr, uint32_t p, std::string v, Args ...args)
+    void fill_parameter(Handle<Value>* arr, uint32_t p, std::string v, Args&& ...args)
     {
         Local<String> jv = rv::string(engine_isolate, v);
         arr[p] = jv;
